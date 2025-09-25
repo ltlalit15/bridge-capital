@@ -16,7 +16,7 @@ const app = express();
 
 dbConnect();
 
-app.use(cors({origin:["https://ladybugs.netlify.app","http://localhost:5173"]}));
+app.use(cors({origin:["https://bizcapitalsa.com","http://localhost:5173"]}));
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
