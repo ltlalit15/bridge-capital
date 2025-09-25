@@ -1,0 +1,1117 @@
+{
+	"info": {
+		"_postman_id": "856c3a85-2b9a-4ca7-9cf4-9642a5ef8411",
+		"name": "Loan-Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38687262",
+		"_collection_link": "https://smart-hr-team.postman.co/workspace/Samrt-HR~3574defe-183d-4fcc-bdac-ba02ac012f7c/collection/38687262-856c3a85-2b9a-4ca7-9cf4-9642a5ef8411?action=share&source=collection_link&creator=38687262"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jhon@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change-Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/change-password/6863c4d14dad4432531a92e8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"change-password",
+								"6863c4d14dad4432531a92e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget-Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"custome1r@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reser-Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\":\"1@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/reset-password/6f8e83d8b424f8252fec78a5f1930f07ddb00f67",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reset-password",
+								"6f8e83d8b424f8252fec78a5f1930f07ddb00f67"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "GetAllCustumer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjNiMjQxOGI4YTU0Y2ZkN2M4ZTUxYSIsImlhdCI6MTc1MTM3MjkxNiwiZXhwIjoxNzUxNDU5MzE2fQ.Hu3uR1oIx3fW-JmZJau9e1MiUvK9HCUx43b45bxqvWk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/custumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"custumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatedCustomerStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerStatus\":\"approved\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/updatecustomerstatus/6863c4fe3b4a5d976d18434f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"updatecustomerstatus",
+								"6863c4fe3b4a5d976d18434f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create-Custumer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "customerName",
+									"value": "Jhon",
+									"type": "text"
+								},
+								{
+									"key": "companyName",
+									"value": "Abc Company pvt ltd",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "jho1n11@gmail.com1",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "132654987",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Indore",
+									"type": "text"
+								},
+								{
+									"key": "creditLine",
+									"value": "5000",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "customer@123",
+									"type": "text"
+								},
+								{
+									"key": "gstDoc",
+									"type": "file",
+									"src": "/C:/Users/rehan/Downloads/FilledChecklist_Kolkata (4).pdf"
+								},
+								{
+									"key": "panDoc",
+									"type": "file",
+									"src": "/C:/Users/rehan/Downloads/FilledChecklist_Kolkata (4).pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/createcustumer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"createcustumer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCustumer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "customerName",
+									"value": "Jhon doe",
+									"type": "text"
+								},
+								{
+									"key": "companyName",
+									"value": "Abc Company pvt ltd",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "jhon11111111@gmail.com1",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "132654987",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Indore",
+									"type": "text"
+								},
+								{
+									"key": "creditLine",
+									"value": "5000",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "customer@123",
+									"type": "text"
+								},
+								{
+									"key": "gstDoc",
+									"type": "file",
+									"src": "/C:/Users/rehan/Downloads/qr-code (24).png"
+								},
+								{
+									"key": "panDoc",
+									"type": "file",
+									"src": "/C:/Users/rehan/Downloads/qr_banner (87).png"
+								},
+								{
+									"key": "approvedAmount",
+									"value": "4000",
+									"type": "text"
+								},
+								{
+									"key": "monthlyInstallment",
+									"value": "400",
+									"type": "text"
+								},
+								{
+									"key": "term_month",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "totalRepayment",
+									"value": "4800",
+									"type": "text"
+								},
+								{
+									"key": "factorRate",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/updateCustumer/6863d43c840063809f548f4a",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"updateCustumer",
+								"6863d43c840063809f548f4a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/deleteCustomer/6863c4fe3b4a5d976d18434f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deleteCustomer",
+								"6863c4fe3b4a5d976d18434f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustomerById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/custumers?customerId=686e770b197852679bf41166",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"custumers"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "686e770b197852679bf41166"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatecustomercredit",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/autoDeductInstallments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"autoDeductInstallments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Withdraw-Payments",
+			"item": [
+				{
+					"name": "WithdrawalPayment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"6863bcc64dad4432531a92d7\",\r\n    \"approvedCreditLine\": \"10000\",\r\n    \"availableAmount\": \"5000\",\r\n    \"withdrawAmount\": \"5000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/withdrawpayment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"withdrawpayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WithdrawalPayment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/getallwithdrawpayment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"getallwithdrawpayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "withdrawstatusupdate",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"withdrawStatus\": \"Approved\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/withdrawstatusupdate/6864ecce13c71b7a2d973b04",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"withdrawstatusupdate",
+								"6864ecce13c71b7a2d973b04"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getWithdrawalsByCustomerId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/getWithdrwBycustomerId/6863bd3f4dad4432531a92da",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"getWithdrwBycustomerId",
+								"6863bd3f4dad4432531a92da"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Repayment",
+			"item": [
+				{
+					"name": "Repayment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\":\"6863bd3f4dad4432531a92da\",\r\n    \"payAmount\":\"5000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/repayments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"repayments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRepayment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/getrepayments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"getrepayments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRepayByCustomerIdAndId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\":\"6863bd3f4dad4432531a92da\",\r\n    \"payAmount\":\"5000\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/getrepayments?customerId=6863bd3f4dad4432531a92da",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"getrepayments"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "6863bd3f4dad4432531a92da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePayStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payStatus\":\"active\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/paymentStatus/686517234e9a9acc7f9be504",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"paymentStatus",
+								"686517234e9a9acc7f9be504"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "GetReport",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/report?reportType=DrawHistory&startDate=2025-01-01&endDate=2025-07-05&customerId=68691791dee45bd99f634234",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"report"
+							],
+							"query": [
+								{
+									"key": "reportType",
+									"value": "DrawHistory"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-07-05"
+								},
+								{
+									"key": "customerId",
+									"value": "68691791dee45bd99f634234"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification",
+			"item": [
+				{
+					"name": "GetNotificationByCustumerId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/getnotification/68668043950e1dad72bc921b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"getnotification",
+								"68668043950e1dad72bc921b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin-Notification",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/adminnotification",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"adminnotification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SendNotification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\":\"65745645454\",\r\n    \"message\":\"Test Message\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notification",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notification"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EarlyPayoffManagment",
+			"item": [
+				{
+					"name": "EarlyPayoff",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customerId\": \"686919e065bf8e9ab230af61\",\r\n  \"earlyPayAmount\": 7500.00\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/earlyPayoff",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"earlyPayoff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEarlyPayoffStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"earlyPayoffStatus\": \"Approved\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/updateEarlyPayoffStatus/686d130dbf94fcef72ac3bc8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"updateEarlyPayoffStatus",
+								"686d130dbf94fcef72ac3bc8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEarlyPayOff",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/getAllEarlyPayoffs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"getAllEarlyPayoffs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CustomerSupport",
+			"item": [
+				{
+					"name": "CreateRequest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"686bcabe34eec0f0c74db94c\",\r\n    \"subject\": \"Support Request\",\r\n    \"message\": \"I need help with my account.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/contact",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSupport",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/contact",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSupport",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/contact/686e247503b3d5eed84bf4bb",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"contact",
+								"686e247503b3d5eed84bf4bb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "getfundingbalance",
+			"item": [
+				{
+					"name": "getfundingbalance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/getfundingbalance",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"getfundingbalance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discount",
+			"item": [
+				{
+					"name": "CreateDiscount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"64f0d2e8e5b1a21b2c45c8fa\",\r\n    \"discountTen\": \"10\",\r\n    \"startDateTen\": \"2025-07-10\",\r\n    \"endDateTen\": \"2025-07-20\",\r\n    \"discountFive\": \"5\",\r\n    \"startDateFive\": \"2025-07-21\",\r\n    \"endDateFive\": \"2025-07-30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/discount",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetDiscountByCustomerId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/discount?customerId=686e70fd19b5f35883f64425",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"discount"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "686e70fd19b5f35883f64425"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetDiscount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/discount",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteDiscount",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/discount/686d06d4d9ceb70e4c63ea65",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"discount",
+								"686d06d4d9ceb70e4c63ea65"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditDiscount",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"64f0d2e8e5b1a21b2c45c8fa\",\r\n    \"discountTen\": \"10\",\r\n    \"startDateTen\": \"2025-07-10\",\r\n    \"endDateTen\": \"2025-07-20\",\r\n    \"discountFive\": \"5\",\r\n    \"startDateFive\": \"2025-07-21\",\r\n    \"endDateFive\": \"2025-07-30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/discount/686d06d4d9ceb70e4c63ea65",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"discount",
+								"686d06d4d9ceb70e4c63ea65"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
