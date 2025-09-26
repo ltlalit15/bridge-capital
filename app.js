@@ -11,6 +11,7 @@ import SupportRouter from "./Routers/SupportRouter.js";
 import CreditUpgardeRequestRouter from "./Routers/CreditUpgardeRequestRouter.js";
 import FundingBalanceRouter from "./Routers/FundingBalanceRouter.js";
 import DiscountRouter from "./Routers/DiscountRouter.js";
+import LoanApplicationRouter from "./Routers/LoanApplicationRouter.js"
 
 const router = Router();
 
@@ -25,5 +26,6 @@ router.use("/api", SupportRouter);
 router.use("/api", CreditUpgardeRequestRouter);
 router.use("/api", FundingBalanceRouter);
 router.use("/api", DiscountRouter);
+router.use("/api", LoanApplicationRouter);
 
 export default router;
