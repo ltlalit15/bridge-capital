@@ -61,7 +61,6 @@
 // app.listen(PORT, () => {
 //     console.log(`✅ Loan Server is running on port ${PORT}`);
 // });
-
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
@@ -69,6 +68,7 @@ dotenv.config();
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
+import cors from "cors";
 
 import { dbConnect } from "./Config/dbConnect.js";
 import routes from "./app.js";
@@ -80,34 +80,26 @@ const app = express();
 dbConnect();
 
 // ==============================
-// ✅ CORS & Preflight Handling
+// ✅ CORS Setup
 // ==============================
 const allowedOrigins = [
   "https://bizcapitalsa.com",
   "http://localhost:5173"
 ];
 
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-  }
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET,POST,PUT,PATCH,DELETE,OPTIONS"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-
-  // Respond immediately to OPTIONS (preflight) requests
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  next();
-});
+app.use(cors({
+  origin: function(origin, callback) {
+    // allow requests with no origin (like Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+}));
 
 // ==============================
 // ✅ Middleware
@@ -128,5 +120,3 @@ app.use("/api", routes);
 app.listen(PORT, () => {
   console.log(`✅ Loan Server is running on port ${PORT}`);
 });
-
-
