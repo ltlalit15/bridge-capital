@@ -16,6 +16,7 @@ const app = express();
 
 dbConnect();
 
+
 app.use(cors({origin:["https://bizcapitalsa.com","http://localhost:5173"]}));
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
