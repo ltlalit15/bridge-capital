@@ -1,5 +1,5 @@
 import LoanApplication from "../Models/LoanApplicationModel.js";
-import cloudinary from "../utils/cloudinary.js";
+import cloudinary from "../Config/cloudinary.js";
 import fs from "fs";
 
 // Create a new loan application
