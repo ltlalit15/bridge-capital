@@ -32,7 +32,23 @@ dbConnect();
 // // ✅ Handle preflight requests
 // app.options("*", cors());
 
-app.use(cors({origin:["https://bizcapitalsa.com","http://localhost:5173"]}));
+// app.use(cors({origin:["https://bizcapitalsa.com","http://localhost:5173"]}));
+
+
+
+app.use(cors({
+  origin: [
+    "https://bizcapitalsa.com",
+    "http://localhost:5173"
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+}));
+
+// ✅ Respond to preflight requests
+app.options("*", cors());
+
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
