@@ -35,21 +35,23 @@
 // // app.options("*", cors());
 
 // // app.use(cors({origin:["https://bizcapitalsa.com","http://localhost:5173"]}));
+// app.options("*", cors());
+// app.use(cors, "*");
 
 
 
-// app.use(cors({
-//   origin: [
-//     "https://bizcapitalsa.com",
-//     "http://localhost:5173"
-//   ],
-//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-//   allowedHeaders: ["Content-Type", "Authorization"],
-//   credentials: true,
-// }));
+// // app.use(cors({
+// //   origin: [
+// //     "https://bizcapitalsa.com",
+// //     "http://localhost:5173"
+// //   ],
+// //   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+// //   allowedHeaders: ["Content-Type", "Authorization"],
+// //   credentials: true,
+// // }));
 
 // // ✅ Respond to preflight requests
-// app.options("*", cors());
+
 
 // app.use(morgan("dev"));
 // app.use(bodyParser.json({ limit: "50mb" }));
@@ -61,6 +63,8 @@
 // app.listen(PORT, () => {
 //     console.log(`✅ Loan Server is running on port ${PORT}`);
 // });
+
+
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
@@ -76,47 +80,41 @@ import routes from "./app.js";
 const PORT = process.env.PORT || 8180;
 const app = express();
 
-// Connect to DB
+// ✅ Connect DB
 dbConnect();
 
-// ==============================
-// ✅ CORS Setup
-// ==============================
+// ✅ Proper CORS Setup
 const allowedOrigins = [
   "https://bizcapitalsa.com",
   "http://localhost:5173"
 ];
 
-app.use(cors({
-  origin: function(origin, callback) {
-    // allow requests with no origin (like Postman)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error("Not allowed by CORS"));
-    }
-  },
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
+  })
+);
+
+// ✅ Handle preflight requests
+app.options("*", cors({
+  origin: allowedOrigins,
   credentials: true,
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
 }));
 
-// ==============================
-// ✅ Middleware
-// ==============================
+// ✅ Middlewares
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 
-// ==============================
 // ✅ Routes
-// ==============================
-app.use("/api", routes);
+app.use(routes);
 
-// ==============================
 // ✅ Start Server
-// ==============================
 app.listen(PORT, () => {
   console.log(`✅ Loan Server is running on port ${PORT}`);
 });
+
